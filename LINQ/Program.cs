@@ -60,7 +60,26 @@ namespace LINQ
                 g.ToList().ForEach(Console.WriteLine);
             });
 
-            
+            Console.WriteLine(Environment.NewLine + "年齢だけ一覧にしたい");
+            var ages = people.Select(p => p.Age).ToList();
+            ages.ForEach(a => Console.WriteLine("//" + a));
+
+            Console.WriteLine(Environment.NewLine + "出身地だけ一覧にして重複を消したい");
+            var birthPlaces = people.Select(p => p.BirthPlace).Distinct().ToList();
+            birthPlaces.ForEach(p => Console.WriteLine("//" + p));
+
+            Console.WriteLine(Environment.NewLine + "年齢の最小値、最大値、平均値、合計値を取得したい");
+            var min = people.Min(p => p.Age);
+            Console.WriteLine("//最小値:" + min);
+
+            var max = people.Max(p => p.Age);
+            Console.WriteLine("//最大値:" + max);
+
+            var average = people.Average(p => p.Age);
+            Console.WriteLine("//平均値:" + average);
+
+            var sum = people.Sum(p => p.Age);
+            Console.WriteLine("//合計値:" + sum);
 
             Console.Read();
         }
@@ -76,7 +95,7 @@ namespace LINQ
 
         public override string ToString()
         {
-            var data = Name + " " + Age + "才 " + (Sex == Sex.Male ? "男 " : "女 ") + BirthPlace + "出身";
+            var data =  "//" + Name + " " + Age + "才 " + (Sex == Sex.Male ? "男 " : "女 ") + BirthPlace + "出身";
             return data;
         }
     }
