@@ -36,6 +36,14 @@ namespace LINQ
 
             Console.WriteLine(firstFemale);
 
+            Console.WriteLine(Environment.NewLine + "熊本県出身の人がいるかどうか");
+            var existPersonFromKumamoto = people.Any(p => p.BirthPlace == "熊本県");
+            Console.WriteLine(existPersonFromKumamoto);
+
+            Console.WriteLine(Environment.NewLine + "全員男性かどうか");
+            var areAllMale = people.All(p => p.Sex == Sex.Male);
+            Console.WriteLine(areAllMale);
+
             Console.WriteLine(Environment.NewLine + "年齢で昇順に並べる");
             var orderedByAge = people.OrderBy(p => p.Age).ToList();
             orderedByAge.ForEach(Console.WriteLine);
@@ -51,6 +59,8 @@ namespace LINQ
                 Console.WriteLine(g.Key);
                 g.ToList().ForEach(Console.WriteLine);
             });
+
+            
 
             Console.Read();
         }
